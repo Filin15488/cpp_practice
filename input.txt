@@ -5,7 +5,7 @@ Ivan
 
 Petrov
 Petr
-7987654321
+79876543210
 2 2 1999
 
 Sidorov
