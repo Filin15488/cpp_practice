@@ -1,5 +1,4 @@
 #include <iostream>
-#include <windows.h>
 #include <iomanip>
 #include <cstring>
 using namespace std;
@@ -25,10 +24,8 @@ int getFirstThreeDigits(const char* phone) {
 }
 
 int main() {
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
 
-    const int N = 2;
+    const int N = 5;
     NOTE notes[N];
     NOTE buffer;
 

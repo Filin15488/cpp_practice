@@ -1,0 +1,26 @@
+Ivanov
+Ivan
+71234567890
+1 1 2000
+
+Petrov
+Petr
+7987654321
+2 2 1999
+
+Sidorov
+Semen
+79217032842
+3 3 1998
+
+Smirnov
+Alex
+79972237610
+4 4 1997
+
+Kuznetsov
+Ilya
+79206603693
+5 5 1996
+
+Ivanov
