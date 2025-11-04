@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cstring>
+#include <locale>
 using namespace std;
 
 struct NOTE {
@@ -24,21 +25,22 @@ int getFirstThreeDigits(const char* phone) {
 }
 
 int main() {
+    setlocale(LC_ALL, "ru_RU.utf8");
 
     const int N = 5;
     NOTE notes[N];
     NOTE buffer;
 
-    cout << "Enter information about " << N << " people:" << endl;
+    cout << "Введите информацию о " << N << " людях:" << endl;
     for (int i = 0; i < N; i++) {
-        cout << "People " << i + 1 << ":" << endl;
-        cout << "SecondName: ";
+        cout << "Человек " << i + 1 << ":" << endl;
+        cout << "Фамилия: ";
         cin >> notes[i].surname;
-        cout << "Name: ";
+        cout << "Имя: ";
         cin >> notes[i].name;
-        cout << "Phone number: ";
+        cout << "Номер телефона: ";
         cin >> notes[i].phone;
-        cout << "Date of birth (day, month, year, separated by spaces): ";
+        cout << "Дата рождения (день, месяц, год, разделённые пробелом): ";
         cin >> notes[i].birthDate[0] >> notes[i].birthDate[1] >> notes[i].birthDate[2];
         cout << endl;
     }
@@ -57,34 +59,44 @@ int main() {
     }
 
     // Вывод отсортированного массива
-    cout << "\nSorted list by first three digits of phone number:\n";
-    cout << setw(15) << "SecondName" << setw(10) << "Name"
-         << setw(15) << "Phone" << setw(15) << "Birthdate" << endl;
+    cout << "\nСписок, отсортированный по первым трём цифрам номеров телефонов:\n";
+    cout << left; // выравнивание по левому краю
+
+    cout << "\t" << "Фамилия"
+         << "\t" << "\t" << "Имя"
+         << "\t" << "\t" << "Номер телефона"
+         << "\t" << "\t" << "Дата рождения" << endl;
+
     for (int i = 0; i < N; i++) {
-        cout << setw(15) << notes[i].surname << setw(10) << notes[i].name
-             << setw(15) << notes[i].phone << setw(10)
-             << notes[i].birthDate[0] << "." << notes[i].birthDate[1] << "." << notes[i].birthDate[2] << endl;
+        char birthStr[12];
+        snprintf(birthStr, sizeof(birthStr), "%02d.%02d.%04d",
+                 notes[i].birthDate[0], notes[i].birthDate[1], notes[i].birthDate[2]);
+
+        cout << "\t" << notes[i].surname
+             << "\t" << "\t" << notes[i].name
+             << "\t" << "\t" << notes[i].phone
+             << "\t" << "\t" << birthStr << endl;
     }
 
     // Поиск по фамилии
     char searchSurname[20];
-    cout << "\nEnter your lastname to search: ";
+    cout << "\nВведите фамилию для поиска: ";
     cin >> searchSurname;
 
     bool found = false;
-    cout << "\nSearch results:\n";
+    cout << "\nРезультат поиска:\n";
     for (int i = 0; i < N; i++) {
         if (strcmp(notes[i].surname, searchSurname) == 0) {
-            cout << "Find: " << notes[i].surname << " " << notes[i].name
-                 << ", phone.: " << notes[i].phone
-                 << ", birthdate: " << notes[i].birthDate[0] << "."
+            cout << "Найден: " << notes[i].surname << " " << notes[i].name
+                 << ", телефон: " << notes[i].phone
+                 << ", дата рождения: " << notes[i].birthDate[0] << "."
                  << notes[i].birthDate[1] << "." << notes[i].birthDate[2] << endl;
             found = true;
         }
     }
 
     if (!found) {
-        cout << "A man with the last name '" << searchSurname << "' not found." << endl;
+        cout << "Человек с фамилией '" << searchSurname << "' не найден." << endl;
     }
 
     return 0;
