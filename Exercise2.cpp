@@ -22,78 +22,80 @@ struct figure {
 int main() {
     int choice;
 
-    cout << "CALCULATION OF AREA AND PERIMETER OF GEOMETRIC FIGURES" << endl;
+    setlocale(LC_ALL, "ru_RU.utf8");
+
+    cout << "ВЫЧИСЛЕНИЕ ПЛОЩАДИ И ПЕРИМЕТРА ГЕОМЕТРИЧЕСКИХ ФИГУР" << endl;
     cout << "===============================================" << endl;
-    cout << "Select the type of figure:" << endl;
-    cout << "1 - Parallelogram" << endl;
-    cout << "2 - Circle" << endl;
-    cout << "3 - Square" << endl;
-    cout << "Your choice: ";
+    cout << "Выберите тип фигуры:" << endl;
+    cout << "1 - Параллелограмм" << endl;
+    cout << "2 - Окружность" << endl;
+    cout << "3 - Квадрат" << endl;
+    cout << "Ваш выбор: ";
     cin >> choice;
 
     switch (choice) {
         case 1: {
             fig.type = PARALLELOGRAM;
-            cout << "Enter the parallelogram parameters:" << endl;
-            cout << "Base: ";
+            cout << "Введите параметры параллелограмма:" << endl;
+            cout << "Основание: ";
             cin >> fig.geom_fig.parallelogram.base;
-            cout << "Height: ";
+            cout << "Высота: ";
             cin >> fig.geom_fig.parallelogram.height;
-            cout << "Side: ";
+            cout << "Боковая сторона: ";
             cin >> fig.geom_fig.parallelogram.side;
 
             fig.area = fig.geom_fig.parallelogram.base * fig.geom_fig.parallelogram.height;
             fig.perimeter = 2 * (fig.geom_fig.parallelogram.base + fig.geom_fig.parallelogram.side);
 
-            cout << "\nCALCULATION RESULTS:" << endl;
-            cout << "Area of parallelogram: " << fixed << setprecision(2) << fig.area << endl;
-            cout << "Perimeter of parallelogram: " << fixed << setprecision(2) << fig.perimeter << endl;
+            cout << "\nРезультат расчётов:" << endl;
+            cout << "Площадь параллелограмма" << fixed << setprecision(2) << fig.area << endl;
+            cout << "Периметр параллелограмма: " << fixed << setprecision(2) << fig.perimeter << endl;
             break;
         }
 
         case 2: {
             fig.type = CIRCLE;
-            cout << "\nEnter the circle parameters:" << endl;
-            cout << "Radius: ";
+            cout << "\nВведите параметры окружности:" << endl;
+            cout << "Радиус: ";
             cin >> fig.geom_fig.radius;
 
             fig.area = M_PI * fig.geom_fig.radius * fig.geom_fig.radius;
             fig.perimeter = 2 * M_PI * fig.geom_fig.radius;
 
-            cout << "\nCALCULATION RESULTS:" << endl;
-            cout << "Area of a circle: " << fixed << setprecision(2) << fig.area << endl;
-            cout << "Circumference: " << fixed << setprecision(2) << fig.perimeter << endl;
+            cout << "\nРезультаты расчётов:" << endl;
+            cout << "Площадь окружности: " << fixed << setprecision(2) << fig.area << endl;
+            cout << "Длина окружности: " << fixed << setprecision(2) << fig.perimeter << endl;
             break;
         }
 
         case 3: {
             fig.type = SQUARE;
-            cout << "\nEnter the parameters of the square:" << endl;
-            cout << "Side length: ";
+            cout << "\nВведите параметры квадрата:" << endl;
+            cout << "Длина стороны: ";
             cin >> fig.geom_fig.side_length;
 
             fig.area = fig.geom_fig.side_length * fig.geom_fig.side_length;
             fig.perimeter = 4 * fig.geom_fig.side_length;
 
-            cout << "\nCALCULATION RESULTS:" << endl;
-            cout << "Area of a square: " << fixed << setprecision(2) << fig.area << endl;
-            cout << "Perimeter of a square: " << fixed << setprecision(2) << fig.perimeter << endl;
+            cout << "\nРезультаты расчётов:" << endl;
+            cout << "Площадь квадрата: " << fixed << setprecision(2) << fig.area << endl;
+            cout << "Периметр квадрата: " << fixed << setprecision(2) << fig.perimeter << endl;
             break;
         }
 
         default:
-            cout << "Error! Incorrect choice." << endl;
+            cout << "Ошибка! Некорректный ввод." << endl;
             return 1;
     }
 
     // Вывод типа фигуры
-    cout << "\nFigure type: ";
+    cout << "\nТип фигуры: ";
     switch (fig.type) {
-        case PARALLELOGRAM: cout << "Parallelogram"; break;
-        case CIRCLE: cout << "Circle"; break;
-        case SQUARE: cout << "Square"; break;
+        case PARALLELOGRAM: cout << "Параллелограмма"; break;
+        case CIRCLE: cout << "Окружность"; break;
+        case SQUARE: cout << "Квадрат"; break;
     }
-    cout << " (code: " << fig.type << ")" << endl;
+    cout << " (код: " << fig.type << ")" << endl;
     return 0;
 
 }

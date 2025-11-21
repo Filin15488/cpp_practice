@@ -1,5 +1,4 @@
 #include <iostream>
-#include <windows.h>
 #include <iomanip>
 using namespace std;
 
@@ -8,48 +7,47 @@ enum CORRECT {NO, YES} correct;
 void check_correct(CORRECT correct, int &ball) {
     if (correct == YES) {
         ball++;
-        cout << "Correct!" << endl;
+        cout << "Правильно!" << endl;
     } else {
-        cout << "Incorrect" << endl;
+        cout << "Неправильно" << endl;
     }
 }
 
 int main() {
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
+    setlocale(LC_ALL, "ru_RU.utf8");
 
     int ball = 0;
     double result;
 
-    cout << "TEST FOR CORRECT DIVISION PERFORMANCE" << endl;
+    cout << "ТЕСТ НА ПРАВИЛЬНОСТЬ ВЫПОЛНЕНИЯ ДЕЛЕНИЯ" << endl;
     cout << "======================================" << endl;
 
     // Задание 1
-    cout << "\nExercise 1: 15 / 3 = ";
+    cout << "\nУпражнение 1: 15 / 3 = ";
     cin >> result;
     correct = (result == 5) ? YES : NO;
     check_correct(correct, ball);
 
     // Задание 2
-    cout << "\nExercise 2: 24 / 6 = ";
+    cout << "\nУпражнение 2: 24 / 6 = ";
     cin >> result;
     correct = (result == 4) ? YES : NO;
     check_correct(correct, ball);
 
     // Задание 3
-    cout << "\nExercise 3: 100 / 25 = ";
+    cout << "\nУпражнение 3: 100 / 25 = ";
     cin >> result;
     correct = (result == 4) ? YES : NO;
     check_correct(correct, ball);
 
     // Задание 4
-    cout << "\nExercise 4: 81 / 9 = ";
+    cout << "\nУпражнение 4: 81 / 9 = ";
     cin >> result;
     correct = (result == 9) ? YES : NO;
     check_correct(correct, ball);
 
     // Задание 5
-    cout << "\nExercise 5: 56 / 7 = ";
+    cout << "\nУпражнение 5: 56 / 7 = ";
     cin >> result;
     correct = (result == 8) ? YES : NO;
     check_correct(correct, ball);
@@ -59,16 +57,16 @@ int main() {
     int fivePointGrade;
 
     if (percent >= 85) fivePointGrade = 5;
-    else if (percent >= 70) fivePointGrade = 4;
-    else if (percent >= 50) fivePointGrade = 3;
+    else if (percent >= 75) fivePointGrade = 4;
+    else if (percent >= 60) fivePointGrade = 3;
     else fivePointGrade = 2;
 
     // Вывод результатов
-    cout << "\n\nTEST RESULTS:" << endl;
+    cout << "\n\nРЕЗУЛЬТАТЫ ТЕСТА:" << endl;
     cout << "=================" << endl;
-    cout << "Correct answers: " << ball << " out of 5" << endl;
-    cout << "Percentage complete: " << fixed << setprecision(1) << percent << "%" << endl;
-    cout << "Rating on a 5-point scale: " << fivePointGrade << endl;
+    cout << "Правильные ответы: " << ball << " из 5" << endl;
+    cout << "Процент завершения: " << fixed << setprecision(1) << percent << "%" << endl;
+    cout << "Оценка по 5-балльной шкале: " << fivePointGrade << endl;
 
     return 0;
 }
