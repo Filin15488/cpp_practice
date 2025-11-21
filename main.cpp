@@ -27,7 +27,7 @@ int getFirstThreeDigits(const char* phone) {
 int main() {
     setlocale(LC_ALL, "ru_RU.utf8");
 
-    const int N = 5;
+    const int N = 6;
     NOTE notes[N];
     NOTE buffer;
 
