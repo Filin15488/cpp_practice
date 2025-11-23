@@ -3,6 +3,8 @@ project(practice)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(practice Exercise2.cpp
+add_executable(practice
         Exercise1.cpp
+        Exercise2.cpp
+        Exercise3.cpp
 )
